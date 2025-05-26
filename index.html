@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meiyashini Nagarajan - Software Developer</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+      color: #111;
+      transition: background 0.5s, color 0.5s;
+    }
+    body.dark {
+      background: #121212;
+      color: #eee;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    #mode-toggle {
+      font-size: 1.3rem;
+      cursor: pointer;
+      background: none;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      padding: 0.3rem 0.7rem;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+    #mode-toggle:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .hero h2 {
+      font-size: 1.6rem;
+      color: #4f46e5;
+      min-height: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+    .social-links a:hover {
+      color: #6366f1;
+    }
+    .projects h2,
+    .about h2,
+    .contact h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #4f46e5;
+    }
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    body.dark .project-card {
+      background: #1f1f1f;
+      box-shadow: 0 4px 12px rgba(255 255 255 / 0.1);
+    }
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5);
+    }
+    .project-card h3 {
+      color: #6366f1;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      color: #333;
+    }
+    body.dark .project-card p {
+      color: #ccc;
+    }
+    .btn {
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.3s;
+      box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4);
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #8b5cf6, #6366f1);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.6);
+    }
+    .about,
+    .contact {
+      max-width: 700px;
+      margin: 3rem auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #222;
+    }
+    body.dark .about,
+    body.dark .contact {
+      color: #ddd;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    input,
+    textarea {
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+    input:focus,
+    textarea:focus {
+      border-color: #6366f1;
+      outline: none;
+      box-shadow: 0 0 6px rgba(99, 102, 241, 0.5);
+    }
+    button.send-btn {
+      background: #10b981;
+      color: white;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.6);
+    }
+    button.send-btn:hover {
+      background: #059669;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.7);
+    }
+    .resume-section {
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .resume-btn {
+      background: #2563eb;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.6);
+    }
+    .resume-btn:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.8);
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .hero h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Scroll to top button styles */
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      font-size: 1.5rem;
+      background: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.7);
+    }
+    #scrollTopBtn:hover {
+      background: #8b5cf6;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Meiyashini Nagarajan</h1>
+      <button id="mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    </header>
+
+    <section class="hero fade-in">
+      <h2 id="typed-text" aria-live="polite" aria-atomic="true"></h2>
+      <div class="social-links">
+        <!-- Mailto link fixed here -->
+         <a href="mailto:meiyashini1311@gmail.com" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+
+        <a href="https://github.com/meiya1311" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/meiyashini-nagarajan" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </section>
+
+    <section class="projects fade-in">
+      <h2>🚀 Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <h3>Heart Disease Prediction</h3>
+          <p>Achieved 85% accuracy using Logistic Regression and Random Forest.</p>
+          <a href="https://github.com/meiya1311/Heart_Disease_prediction-using-ML" target="_blank" rel="noopener noreferrer" class="btn">GitHub Repo</a>
+        </div>
+        <div class="project-card">
+          <h3>Fake News Detection</h3>
+          <p>Real-time classification using TF-IDF with ~80% accuracy. Fast, lightweight system.</p>
+          <a href="https://github.com/meiya1311/Fake_news_detection" target="_blank" rel="noopener noreferrer" class="btn">GitHub Repo</a>
+        </div>
+        <div class="project-card">
+          <h3>Employee Management System</h3>
+          <p>Python-based CLI for managing employee records. Reduced manual errors by 90%.</p>
+          <a href="https://github.com/meiya1311/Employee-Management-System" target="_blank" rel="noopener noreferrer" class="btn">GitHub Repo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about fade-in">
+      <h2>👩‍💻 About Me</h2>
+      <p>
+        I’m a Computer Science student passionate about software development and machine learning. I build efficient, scalable solutions and enjoy turning ideas into real applications. Experienced with Python, full-stack projects, and real-time system design.
+      </p>
+    </section>
+
+    <section class="resume-section fade-in">
+      <button class="resume-btn" onclick="window.open('Meiyashini N_Resume.pdf', '_blank')">📄 Download Resume</button>
+    </section>
+
+    <!-- Updated Contact Me section with Formsubmit -->
+     <section class="contact fade-in">
+  <h2>📬 Contact Me</h2>
+  <form action="https://formsubmit.co/meiyashini1311@gmail.com" method="POST" target="_blank">
+    <!-- FormSubmit hidden fields -->
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_next" value="https://meiya1311.github.io/thank-you.html" />
+    
+    <input type="text" name="name" placeholder="Your Name" required autocomplete="name" />
+    <input type="email" name="email" placeholder="Your Email" required autocomplete="email" />
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit" class="send-btn">Send</button>
+  </form>
+</section>
+
+  <button id="scrollTopBtn" aria-label="Scroll to top">⬆️</button>
+
+  <script>
+    // Dark mode toggle logic
+    const toggleBtn = document.getElementById('mode-toggle');
+    const body = document.body;
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      toggleBtn.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+
+    // Scroll to top button
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollBtn.style.display = 'block';
+        setTimeout(() => scrollBtn.style.opacity = '1', 10);
+      } else {
+        scrollBtn.style.opacity = '0';
+        setTimeout(() => scrollBtn.style.display = 'none', 300);
+      }
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Fade-in animations
+    const fadeIns = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0,
+      rootMargin: "0px 0px -100px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+    fadeIns.forEach(fadeIn => {
+      appearOnScroll.observe(fadeIn);
+    });
+
+    // Typed text effect
+    const typedTextEl = document.getElementById('typed-text');
+    const roles = [
+      'Software Developer',
+      'Machine Learning Enthusiast',
+      'Open Source Contributor',
+      'Problem Solver'
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let typingDelay = 120;
+    let erasingDelay = 60;
+    let newTextDelay = 1500;
+
+    function type() {
+      if (charIndex < roles[roleIndex].length) {
+        typedTextEl.textContent += roles[roleIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, typingDelay);
+      } else {
+        setTimeout(erase, newTextDelay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedTextEl.textContent = roles[roleIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, erasingDelay);
+      } else {
+        roleIndex++;
+        if (roleIndex >= roles.length) roleIndex = 0;
+        setTimeout(type, typingDelay + 1100);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if(roles.length) setTimeout(type, newTextDelay + 250);
+    });
+  </script>
+</body>
+</html>
